@@ -1,0 +1,25 @@
+{
+  "name": "suggest_a_book_mvp",
+  "version": "1.0.0",
+  "description": "mvp for HR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MGlyer/mvp.git"
+  },
+  "author": "Morning Star",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MGlyer/mvp/issues"
+  },
+  "homepage": "https://github.com/MGlyer/mvp#readme",
+  "dependencies": {
+    "axios": "0.18.0",
+    "body-parser": "^1.18.3",
+    "react": "^16.4.1",
+    "webpack": "^4.16.0"
+  }
+}

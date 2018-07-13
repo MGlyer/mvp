@@ -15,10 +15,10 @@ class App extends React.Component {
     }
 
     // *********method section
-    findBook (bookData) {
+    findBook () {
         let toSend = {
             genre: bookData.genre,
-            era: bookData.era || 'NO ERA'
+            // era: bookData.era || 'NO ERA'
         }
         axios.post('/', toSend)
              .then((response) => {

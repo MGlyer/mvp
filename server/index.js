@@ -15,7 +15,7 @@ server.use(express.static(__dirname + '/../client/dist'));
 //server functions
 server.post('/', (req, res) => {
     let genre = req.body.genre
-    let era = req.body.era
+    // let era = req.body.era
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=subject:${genre}&KEY=${APIKEY}`)
          .then((response) => {
             //  console.log('data received from google! ', response.data)

@@ -11,7 +11,7 @@ class App extends React.Component {
             genre: ''
         }
         this.findBook = this.findBook.bind(this)
-        this.getFaves = this.getFaces.bind(this)
+        this.getFaves = this.getFaves.bind(this)
         this.handleGenreSelect = this.handleGenreSelect.bind(this)
         this.handleMainClick = this.handleMainClick.bind(this)
     }

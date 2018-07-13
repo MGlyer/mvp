@@ -26,7 +26,7 @@ class App extends React.Component {
     }
 
     getFaves () {
-        axios.get('/')
+        axios.get('/faves')
              .then((response) => {
                  console.log('from the database: ', response)
              })

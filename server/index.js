@@ -18,6 +18,10 @@ server.post('/', (req, res) => {
     res.send(genre)
 })
 
+server.get('/faves', (req, res) => {
+    res.send('sucessful get request!')
+})
+
 
 
 

@@ -1,15 +1,16 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import axios from 'axios'
-const demo = require('../../data.js').books
+// const demo = require('../../data.js').books
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            bookToShow: demo[0],
+            bookToShow: {},
             genre: '',
-            showingFaves: false
+            showingFaves: false,
+            searchMade: false
         }
         this.findBook = this.findBook.bind(this)
         this.getFaves = this.getFaves.bind(this)
@@ -28,7 +29,7 @@ class App extends React.Component {
              .then((response) => {
                  console.log('from the API: ', response)
                  let book = this.pluckRandomBook(response.data)
-                 this.setState({bookToShow: book})
+                 this.setState({bookToShow: book, searchMade: true})
                 //  console.log(this.state.bookToShow)
              })
              .catch((err) => {
@@ -59,16 +60,16 @@ class App extends React.Component {
 
     handleMainClick() {
         console.log('clicked the main button!')
-        this.setState({showingFaves: true})
-        this.forceUpdate()
+        this.setState({showingFaves: false})
     }
 
     handleFavesClick() {
         console.log('clicked the faves button!')
-        this.setState({showingFaves: false})
-        this.forceUpdate()
+        this.setState({showingFaves: true})
         // this.getFaves()
     }
+
+    book = this.state.bookToShow
 
 
 
@@ -107,10 +108,21 @@ class App extends React.Component {
                         <button className="favorite">Save this book!</button>
                     </div>
                 
-                    <div className="bookInfo">
-                
-                    </div>
-                    <div> No Faves FOR YOU </div>
+
+                    {
+                        this.state.searchMade ?
+                        <div>
+                            <div className="bookInfo">
+                        
+                            </div>
+                            <div> Here is your book info: </div>
+                            
+                            <img src = {`${book.volumeInfo.imageLinks.thumbnail}`} ></img>
+                        </div>
+                        :
+                        null
+                    }
+                    
                 </div>
             )
         }

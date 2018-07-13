@@ -1,13 +1,16 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import axios from 'axios'
+const demo = require('../../data.js').books
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.State = {
-            bookToShow: {}
+            bookToShow: demo[0],
+            genre: ''
         }
+        this.findBook = this.findBook.bind(this)
     }
 
     // *********method section
@@ -41,7 +44,22 @@ class App extends React.Component {
     render() {
         return (
             <div class='main'>
-                look at me!  I'm live on the server!
+                <h3>Look-a-Book</h3>
+                Please select a genre, and I'll find you a book!
+
+                <div class="dropdown">
+                    <select>
+                        <option value=''></option>
+                        <option value='History'>History</option>
+                        <option value='Romance'>Romance</option>
+                        <option value='Fantasy'>Fantasy</option>
+                    </select>
+                    <button onClick= {this.findBook}>Find my book!</button>
+                </div>
+
+                <div class="bookInfo">
+                    
+                </div>
             </div>
         )
     }

@@ -11,6 +11,7 @@ class App extends React.Component {
             genre: ''
         }
         this.findBook = this.findBook.bind(this)
+        this.handleGenreSelect = this.handleGenreSelect.bind(this)
     }
 
     // *********method section
@@ -38,27 +39,38 @@ class App extends React.Component {
              ])
     }
 
+    handleGenreSelect(e) {
+        console.log(e.target.value)
+        this.setState({
+            genre: e.target.value
+        })
+    }
+
 
 
     //*********render section
     render() {
         return (
-            <div class='main'>
+            <div className='main'>
                 <h3>Look-a-Book</h3>
                 Please select a genre, and I'll find you a book!
 
-                <div class="dropdown">
-                    <select>
+                <div className="dropdown">
+                    <select onClick = {this.handleGenreSelect}>
                         <option value=''></option>
-                        <option value='History'>History</option>
+                        <option value='History' >History</option>
                         <option value='Romance'>Romance</option>
                         <option value='Fantasy'>Fantasy</option>
+                        <option value='Non-Fiction'>Non-Fiction</option>
+                        <option value='Sci-Fi'>Sci-Fi</option>
+                        <option value='Biography'>Biography</option>
+                        <option value='Travel'>Travel</option>
                     </select>
                     <button onClick= {this.findBook}>Find my book!</button>
                 </div>
 
-                <div class="bookInfo">
-                    
+                <div className="bookInfo">
+
                 </div>
             </div>
         )

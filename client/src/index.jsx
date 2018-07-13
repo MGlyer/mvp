@@ -69,7 +69,7 @@ class App extends React.Component {
         // this.getFaves()
     }
 
-    book = this.state.bookToShow
+
 
 
 
@@ -116,8 +116,18 @@ class App extends React.Component {
                         
                             </div>
                             <div> Here is your book info: </div>
-                            
-                            <img src = {`${book.volumeInfo.imageLinks.thumbnail}`} ></img>
+
+                            <div>
+                            <img className='bookImg' src = {`${this.state.bookToShow.volumeInfo.imageLinks.thumbnail}`} ></img>
+                            </div>
+
+                            <div>
+                            Author: {`${this.state.bookToShow.volumeInfo.authors[0]}`}
+                            Published: {`${this.state.bookToShow.volumeInfo.publishedDate}`}
+                            Synposis: {`${this.state.bookToShow.volumeInfo.description}`}
+                            Price: ${`${this.state.bookToShow.saleInfo.retailPrice.amount}`}
+                            <a href={`${this.state.bookToShow.saleInfo.buyLink}`}>Buy Here</a>
+                            </div>
                         </div>
                         :
                         null

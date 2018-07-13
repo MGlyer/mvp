@@ -11,6 +11,29 @@ class App extends React.Component {
     }
 
     // *********method section
+    findBook (bookData) {
+        let toSend = {
+            genre: bookData.genre,
+            era: bookData.era || 'NO ERA'
+        }
+        axios.post('/', toSend)
+             .then((response) => {
+                 console.log('from the API: ', response)
+             })
+             .catch((err) => {
+                 console.error(err)
+             })
+    }
+
+    getFaves () {
+        axios.get('/')
+             .then((response) => {
+                 console.log('from the database: ', response)
+             })
+             .catch((err) [
+                 console.error(err)
+             ])
+    }
 
 
 

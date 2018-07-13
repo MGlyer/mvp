@@ -12,7 +12,11 @@ server.use(express.static(__dirname + '/../client/dist'));
 
 
 //server functions
-
+server.post('/', (req, res) => {
+    let genre = req.body.genre
+    let era = req.body.era
+    res.send(genre)
+})
 
 
 

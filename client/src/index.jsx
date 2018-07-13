@@ -11,7 +11,9 @@ class App extends React.Component {
             genre: ''
         }
         this.findBook = this.findBook.bind(this)
+        this.getFaves = this.getFaces.bind(this)
         this.handleGenreSelect = this.handleGenreSelect.bind(this)
+        this.handleMainClick = this.handleMainClick.bind(this)
     }
 
     // *********method section
@@ -37,9 +39,9 @@ class App extends React.Component {
              .then((response) => {
                  console.log('from the database: ', response)
              })
-             .catch((err) [
+             .catch((err) => {
                  console.error(err)
-             ])
+             })
     }
 
     handleGenreSelect(e) {
@@ -58,6 +60,12 @@ class App extends React.Component {
         this.setState({bookToShow: {}})
     }
 
+    handleFavesClick() {
+        console.log('clicked the faves button!')
+        this.setState({bookToShow: {}})
+        this.getFaves()
+    }
+
 
 
     //*********render section
@@ -67,8 +75,8 @@ class App extends React.Component {
                 <h3>Look-a-Book</h3>
                 Please select a genre, and I'll find you a book!
                 <div>
-                    <button className = "mainScreen" onClick = {this.hangleMainClick()}>Main</button>
-                    <button className = "showFaves">Show Favorited Books</button>
+                    <button className = "mainScreen" onClick = {this.handleMainClick}>Main</button>
+                    <button className = "showFaves" onClick = {this.handleFavesClick}>Show Favorited Books</button>
                 </div>
 
                 <div className="dropdown">

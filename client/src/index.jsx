@@ -10,8 +10,11 @@ class App extends React.Component {
         }
     }
 
+    // *********method section
 
 
+
+    //*********render section
     render() {
         return (
             <div class='main'>

@@ -47,6 +47,16 @@ class App extends React.Component {
              })
     }
 
+    addFave() {
+        let toSend = {
+            title: this.state.bookToShow.volumeInfo.authors[0],
+            img: this.state.bookToShow.volumeInfo.description
+        }
+        axiost.post('/faves', toSend)
+              .then((response) => console.log('favorite added!'))
+              .catch((err) => console.error(err))
+    }
+
     handleGenreSelect(e) {
         this.setState({
             genre: e.target.value
@@ -123,10 +133,10 @@ class App extends React.Component {
 
                             <div>
                             Author: {`${this.state.bookToShow.volumeInfo.authors[0]}`}
-                            Published: {`${this.state.bookToShow.volumeInfo.publishedDate}`}
+                            {/* Published: {`${this.state.bookToShow.volumeInfo.publishedDate}`} */}
                             Synposis: {`${this.state.bookToShow.volumeInfo.description}`}
-                            Price: ${`${this.state.bookToShow.saleInfo.retailPrice.amount}`}
-                            <a href={`${this.state.bookToShow.saleInfo.buyLink}`}>Buy Here</a>
+                            {/* Price: ${`${this.state.bookToShow.saleInfo.retailPrice.amount}`} */}
+                            {/* <a href={`${this.state.bookToShow.saleInfo.buyLink}`}>Buy Here</a> */}
                             </div>
                         </div>
                         :

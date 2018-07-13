@@ -24,6 +24,10 @@ server.post('/', (req, res) => {
          .catch((err) => console.error(err))
 })
 
+server.post('/faves', (req, res) => {
+    //
+})
+
 server.get('/faves', (req, res) => {
     res.send('sucessful get request!')
 })

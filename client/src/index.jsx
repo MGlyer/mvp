@@ -17,12 +17,15 @@ class App extends React.Component {
     // *********method section
     findBook () {
         let toSend = {
-            genre: bookData.genre,
+            genre: this.state.genre,
             // era: bookData.era || 'NO ERA'
         }
         axios.post('/', toSend)
              .then((response) => {
                  console.log('from the API: ', response)
+                 let book = this.pluckRandomBook(response.data)
+                 this.setState({bookToShow: book})
+                //  console.log(this.state.bookToShow)
              })
              .catch((err) => {
                  console.error(err)
@@ -40,10 +43,19 @@ class App extends React.Component {
     }
 
     handleGenreSelect(e) {
-        console.log(e.target.value)
         this.setState({
             genre: e.target.value
         })
+    }
+
+    pluckRandomBook(books) {
+        let ind = Math.floor(Math.random() * books.length)
+        return books[ind]
+    }
+
+    handleMainClick() {
+        console.log('clicked the main button!')
+        this.setState({bookToShow: {}})
     }
 
 
@@ -54,6 +66,10 @@ class App extends React.Component {
             <div className='main'>
                 <h3>Look-a-Book</h3>
                 Please select a genre, and I'll find you a book!
+                <div>
+                    <button className = "mainScreen" onClick = {this.hangleMainClick()}>Main</button>
+                    <button className = "showFaves">Show Favorited Books</button>
+                </div>
 
                 <div className="dropdown">
                     <select onClick = {this.handleGenreSelect}>
@@ -61,12 +77,12 @@ class App extends React.Component {
                         <option value='History' >History</option>
                         <option value='Romance'>Romance</option>
                         <option value='Fantasy'>Fantasy</option>
-                        <option value='Non-Fiction'>Non-Fiction</option>
                         <option value='Sci-Fi'>Sci-Fi</option>
                         <option value='Biography'>Biography</option>
                         <option value='Travel'>Travel</option>
                     </select>
                     <button onClick= {this.findBook}>Find my book!</button>
+                    <button className="favorite">Save this book!</button>
                 </div>
 
                 <div className="bookInfo">

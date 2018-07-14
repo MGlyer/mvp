@@ -117,3 +117,17 @@ button{
       display: flex;
       flex-wrap: wrap; 
   }
+
+  .bookInfoImg {
+      width: 20%;
+      display: inline-block;
+  }
+  .bookInfo1 {
+      width: 20%;
+      display: inline-block;
+  }
+
+  .bookInfo2 {
+      width: 50%;
+      display: inline-block;
+  }

@@ -161,16 +161,18 @@ class App extends React.Component {
                             <div className="bookInfo">
                         
                             </div>
-                            <div className = 'headerHeader'> Here is your book info:</div>
-                            <div className = 'headerTitle'> Title: {`${this.state.bookToShow.volumeInfo.title}`}</div>
+                            <div className = 'headerHeader'> Here is your book info</div>
 
-                            <div>
-                            <img className='bookImg' src = {`${this.state.bookToShow.volumeInfo.imageLinks.thumbnail}`} ></img>
-                            </div>
 
                             <div className = "bookInfoMain">
+                                <div className = "bookInfoImg">
+                                <img className='bookImg' src = {`${this.state.bookToShow.volumeInfo.imageLinks.thumbnail}`} ></img>
+                                </div>
+
                                 <div className="bookInfo1">
+                                <div>{`${this.state.bookToShow.volumeInfo.title}`}</div>
                                 Author: {`${this.state.bookToShow.volumeInfo.authors[0]}`}
+                                <br/>
                                 Published: {`${this.state.bookToShow.volumeInfo.publishedDate}`}
                                 {
                                     this.state.bookToShow.saleInfo.retailPrice ?

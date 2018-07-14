@@ -19,6 +19,8 @@ class App extends React.Component {
         this.handleGenreSelect = this.handleGenreSelect.bind(this)
         this.handleMainClick = this.handleMainClick.bind(this)
         this.handleFavesClick = this.handleFavesClick.bind(this)
+        this.removeFavorite = this.removeFavorite.bind(this)
+        this.updateFaves = this.updateFaves.bind(this)
     }
 
     // *********method section
@@ -83,6 +85,25 @@ class App extends React.Component {
             console.log(data)
             this.setState({showingFaves: true})
         })
+    }
+
+    removeFavorite(fave) {
+        console.log('removing said item')
+        let currentFaves = this.state.favorites.slice();
+        for (var i =0; i < currentFaves.length; i++) {
+            if (currentFaves[i].title === fave.title) {
+                currentFaves.splice(i, 1);
+                break
+            }
+        }
+        this.setState({favorites: currentFaves})
+        this.updateFaves(fave)
+    }
+
+    updateFaves(toUpdate) {
+        axios.post('/remove', toUpdate)
+             .then((response) => console.log('removed from db'))
+             .catch((err) => console.error(err))
     }
 
 

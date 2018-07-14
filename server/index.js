@@ -7,6 +7,7 @@ const axios = require('axios')
 const APIKEY = require('../config.js')
 const save = require('../database').save
 const fetch = require('../database').fetch
+const remove = require('../database').remove
 
 
 //hookup functionality
@@ -40,6 +41,11 @@ server.get('/faves', (req, res) => {
         if (err) console.error(err)
         res.send(data)
     })
+})
+
+server.post('/remove', (req, res) => {
+    remove(req.body)
+    res.send(200)
 })
 
 

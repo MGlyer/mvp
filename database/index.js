@@ -6,6 +6,7 @@ let db = mongoose.connection;
 let bookSchema = mongoose.Schema({
     // bookID: Number,
     title: String,
+    // title: {type: String, unique: true},
     // author: String,
     // price: Number,
     img: String
@@ -23,8 +24,6 @@ db.once('open', () => {
 })
 
 let save = (newFave) => {
-
-
     FaveBook.findOneAndUpdate({
         title: newFave.title,
     }, {
@@ -48,8 +47,13 @@ let fetch = (cb) => {
     })
 }
 
+let remove = (toRemove) => {
+    FaveBook.find({title: toRemove.title}).remove().exec()
+}
+
 
 
 
 module.exports.save = save
 module.exports.fetch = fetch
+module.exports.remove = remove

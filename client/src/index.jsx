@@ -121,7 +121,7 @@ class App extends React.Component {
                     <div> here are the faaaaves!</div>
                     <div className = 'favorites'>
                     {this.state.favorites.map((fave) => 
-                        <FavoriteBook stats = {fave}/>
+                        <FavoriteBook stats = {fave} func = {this.removeFavorite}/>
                     )}
                     </div>
                 </div>

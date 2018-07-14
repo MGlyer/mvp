@@ -147,8 +147,14 @@ class App extends React.Component {
                             Author: {`${this.state.bookToShow.volumeInfo.authors[0]}`}
                             Published: {`${this.state.bookToShow.volumeInfo.publishedDate}`}
                             Synposis: {`${this.state.bookToShow.volumeInfo.description}`}
-                            {/* Price: ${`${this.state.bookToShow.saleInfo.retailPrice.amount}`} */}
-                            {/* <a href={`${this.state.bookToShow.saleInfo.buyLink}`}>Buy Here</a> */}
+                            {
+                                this.state.bookToShow.saleInfo.retailPrice ?
+                                <span>
+                                Price: {`${this.state.bookToShow.saleInfo.retailPrice.amount}`}
+                                <a href = {`${this.state.bookToShow.saleInfo.buyLink}`}>Buy Here</a>
+                                </span>
+                                : null
+                            }
                             </div>
                         </div>
                         :

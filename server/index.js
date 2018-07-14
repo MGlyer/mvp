@@ -5,6 +5,8 @@ let server = express()
 const parser = require('body-parser')
 const axios = require('axios')
 const APIKEY = require('../config.js')
+const save = require('../database').save
+const fetch = require('../database').fetch
 
 
 //hookup functionality
@@ -25,7 +27,13 @@ server.post('/', (req, res) => {
 })
 
 server.post('/faves', (req, res) => {
-    //
+    let toDb = {
+        title: req.body.title,
+        img: req.body.img
+    }
+    console.log('in post, about to send to db', toDb)
+    save(toDb);
+    res.send('we saved to the db!')
 })
 
 server.get('/faves', (req, res) => {

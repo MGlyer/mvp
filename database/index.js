@@ -14,17 +14,29 @@ let bookSchema = mongoose.Schema({
 let FaveBook = mongoose.model('FaveBook', bookSchema)
 
 db.once('open', () => {
-    console.log(`database is open!`)
+    // let dummy = new FaveBook({
+    //     title: 'dummy',
+    //     img: ''
+    // })
+    // dummy.save()
+    console.log('the Database is OPEN!')
 })
 
 let save = (newFave) => {
-    return new FaveBook({
+    let book = new FaveBook({
         title: newFave.title,
         img: newFave.img
-    }).save()
+    })
+    book.save()
+        .catch((err) => console.error(err))
+}
+
+let fetch = () => {
+    FaveBook.find({})
 }
 
 
 
 
 module.exports.save = save
+module.exports.fetch = fetch

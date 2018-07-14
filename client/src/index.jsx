@@ -14,6 +14,7 @@ class App extends React.Component {
         }
         this.findBook = this.findBook.bind(this)
         this.getFaves = this.getFaves.bind(this)
+        this.addFave = this.addFave.bind(this)
         this.handleGenreSelect = this.handleGenreSelect.bind(this)
         this.handleMainClick = this.handleMainClick.bind(this)
         this.handleFavesClick = this.handleFavesClick.bind(this)
@@ -52,7 +53,7 @@ class App extends React.Component {
             title: this.state.bookToShow.volumeInfo.authors[0],
             img: this.state.bookToShow.volumeInfo.description
         }
-        axiost.post('/faves', toSend)
+        axios.post('/faves', toSend)
               .then((response) => console.log('favorite added!'))
               .catch((err) => console.error(err))
     }
@@ -76,7 +77,6 @@ class App extends React.Component {
     handleFavesClick() {
         console.log('clicked the faves button!')
         this.setState({showingFaves: true})
-        // this.getFaves()
     }
 
 
@@ -115,7 +115,7 @@ class App extends React.Component {
                             <option value='Travel'>Travel</option>
                         </select>
                         <button onClick= {this.findBook}>Find my book!</button>
-                        <button className="favorite">Save this book!</button>
+                        <button className="favorite" onClick = {this.addFave}>Save this book!</button>
                     </div>
                 
 

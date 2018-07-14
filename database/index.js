@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/books')
+// mongoose.connect('mongodb://localhost/books')
+mongoose.connect('mongodb://user:guestguest1@ds137601.mlab.com:37601/mvpdatabase')
 
 let db = mongoose.connection;
 

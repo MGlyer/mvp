@@ -4,10 +4,15 @@ let server = express()
 //middleware and helper functions
 const parser = require('body-parser')
 const axios = require('axios')
-const APIKEY = require('../config.js')
 const save = require('../database').save
 const fetch = require('../database').fetch
 const remove = require('../database').remove
+let APIKEY
+try{
+    APIKEY = require('../config.js')
+} catch(err) {
+    APIKEY = process.env.APIKEY
+}
 
 
 //hookup functionality

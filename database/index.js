@@ -5,8 +5,8 @@ let db = mongoose.connection;
 
 let bookSchema = mongoose.Schema({
     // bookID: Number,
-    title: String,
-    // title: {type: String, unique: true},
+    // title: String,
+    title: {type: String, unique: true},
     // author: String,
     // price: Number,
     img: String
@@ -24,20 +24,20 @@ db.once('open', () => {
 })
 
 let save = (newFave) => {
-    FaveBook.findOneAndUpdate({
-        title: newFave.title,
-    }, {
-        title: newFave.title,
-        img: newFave.img
-    }, {upsert:true}, (err) => {
-        if (err) console.error(err)
-    }).exec()
-    // let book = new FaveBook({
+    // FaveBook.findOneAndUpdate({
+    //     title: newFave.title,
+    // }, {
     //     title: newFave.title,
     //     img: newFave.img
-    // })
-    // book.save()
-    //     .catch((err) => console.error(err))
+    // }, {upsert:true}, (err) => {
+    //     if (err) console.error(err)
+    // }).exec()
+    let book = new FaveBook({
+        title: newFave.title,
+        img: newFave.img
+    })
+    book.save()
+        .catch((err) => console.error(err))
 }
 
 let fetch = (cb) => {

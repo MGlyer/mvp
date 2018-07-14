@@ -1,10 +1,10 @@
 import React from 'react'
 
 const FavoriteBook = ({stats, func}) => (
-    <div>
+    <div className="favebook">
         <div>
+        <p className="title">{stats.title}</p>
         <img className='SmallBookImg' src = {stats.img} ></img>
-        Title: {stats.title}
         </div>
 
         <button className="removeFav"  onClick= {() => {

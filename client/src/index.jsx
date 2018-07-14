@@ -116,9 +116,10 @@ class App extends React.Component {
         if (this.state.showingFaves) {
             return (
                 <div>
+                    <h1>Look-a-Book</h1>
+                    <div className= "subtitle">here are the faaaaves!</div>
                     <button className = "mainScreen" onClick = {this.handleMainClick}>Main</button>
                     <button className = "showFaves" onClick = {this.handleFavesClick}>Show Favorited Books</button>
-                    <div> here are the faaaaves!</div>
                     <div className = 'favorites'>
                     {this.state.favorites.map((fave) => 
                         <FavoriteBook stats = {fave} func = {this.removeFavorite}/>
@@ -129,8 +130,8 @@ class App extends React.Component {
         } else {
             return (
                 <div>
-                    <h3>Look-a-Book</h3>
-                    <span>Please select a genre, and I'll find you a book!</span>
+                    <h1>Look-a-Book</h1>
+                    <div className= "subtitle">Please select a genre, and I'll find you a book!</div>
                     <div>
                         <button className = "mainScreen" onClick = {this.handleMainClick}>Main</button>
                         <button className = "showFaves" onClick = {this.handleFavesClick}>Show Favorited Books</button>

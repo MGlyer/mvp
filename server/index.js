@@ -4,7 +4,7 @@ let server = express()
 //middleware and helper functions
 const parser = require('body-parser')
 const axios = require('axios')
-const APIKEY = require('../config.js')
+const APIKEY = Process.env.APIKEY || require('../config.js')
 const save = require('../database').save
 const fetch = require('../database').fetch
 const remove = require('../database').remove

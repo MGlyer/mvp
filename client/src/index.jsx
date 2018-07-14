@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import axios from 'axios'
-// const demo = require('../../data.js').books
+import FavoriteBook from './components/favorite.jsx'
 
 class App extends React.Component {
     constructor(props) {
@@ -39,10 +39,12 @@ class App extends React.Component {
              })
     }
 
-    getFaves () {
+    getFaves (cb) {
         axios.get('/faves')
              .then((response) => {
                  console.log('from the database: ', response.data)
+                 this.setState({favorites: response.data})
+                 cb(response.data)
              })
              .catch((err) => {
                  console.error(err)
@@ -77,8 +79,10 @@ class App extends React.Component {
 
     handleFavesClick() {
         console.log('clicked the faves button!')
-        this.setState({showingFaves: true})
-        this.getFaves()
+        this.getFaves((data) => {
+            console.log(data)
+            this.setState({showingFaves: true})
+        })
     }
 
 
@@ -94,6 +98,11 @@ class App extends React.Component {
                     <button className = "mainScreen" onClick = {this.handleMainClick}>Main</button>
                     <button className = "showFaves" onClick = {this.handleFavesClick}>Show Favorited Books</button>
                     <div> here are the faaaaves!</div>
+                    <div className = 'favorites'>
+                    {this.state.favorites.map((fave) => 
+                        <FavoriteBook stats = {fave}/>
+                    )}
+                    </div>
                 </div>
             )
         } else {
@@ -135,7 +144,7 @@ class App extends React.Component {
 
                             <div>
                             Author: {`${this.state.bookToShow.volumeInfo.authors[0]}`}
-                            {/* Published: {`${this.state.bookToShow.volumeInfo.publishedDate}`} */}
+                            Published: {`${this.state.bookToShow.volumeInfo.publishedDate}`}
                             Synposis: {`${this.state.bookToShow.volumeInfo.description}`}
                             {/* Price: ${`${this.state.bookToShow.saleInfo.retailPrice.amount}`} */}
                             {/* <a href={`${this.state.bookToShow.saleInfo.buyLink}`}>Buy Here</a> */}

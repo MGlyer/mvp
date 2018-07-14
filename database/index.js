@@ -23,12 +23,22 @@ db.once('open', () => {
 })
 
 let save = (newFave) => {
-    let book = new FaveBook({
+
+
+    FaveBook.findOneAndUpdate({
+        title: newFave.title,
+    }, {
         title: newFave.title,
         img: newFave.img
-    })
-    book.save()
-        .catch((err) => console.error(err))
+    }, {upsert:true}, (err) => {
+        if (err) console.error(err)
+    }).exec()
+    // let book = new FaveBook({
+    //     title: newFave.title,
+    //     img: newFave.img
+    // })
+    // book.save()
+    //     .catch((err) => console.error(err))
 }
 
 let fetch = (cb) => {

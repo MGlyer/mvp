@@ -53,8 +53,8 @@ class App extends React.Component {
 
     addFave() {
         let toSend = {
-            title: this.state.bookToShow.volumeInfo.authors[0],
-            img: this.state.bookToShow.volumeInfo.description
+            title: this.state.bookToShow.volumeInfo.title,
+            img: this.state.bookToShow.volumeInfo.imageLinks.thumbnail
         }
         axios.post('/faves', toSend)
               .then((response) => console.log('favorite added!'))
@@ -136,7 +136,8 @@ class App extends React.Component {
                             <div className="bookInfo">
                         
                             </div>
-                            <div> Here is your book info: </div>
+                            <div> Here is your book info:</div>
+                            <div> Title: {`${this.state.bookToShow.volumeInfo.title}`}</div>
 
                             <div>
                             <img className='bookImg' src = {`${this.state.bookToShow.volumeInfo.imageLinks.thumbnail}`} ></img>

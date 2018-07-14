@@ -31,13 +31,15 @@ server.post('/faves', (req, res) => {
         title: req.body.title,
         img: req.body.img
     }
-    console.log('in post, about to send to db', toDb)
     save(toDb);
     res.send('we saved to the db!')
 })
 
 server.get('/faves', (req, res) => {
-    res.send('sucessful get request!')
+    fetch((err, data) => {
+        if (err) console.error(err)
+        res.send(data)
+    })
 })
 
 

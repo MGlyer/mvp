@@ -31,8 +31,11 @@ let save = (newFave) => {
         .catch((err) => console.error(err))
 }
 
-let fetch = () => {
-    FaveBook.find({})
+let fetch = (cb) => {
+    FaveBook.find({}, (err, docs) => {
+        if (err) console.error(err)
+        else cb(null, docs)
+    })
 }
 
 

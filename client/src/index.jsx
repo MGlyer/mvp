@@ -9,6 +9,7 @@ class App extends React.Component {
         this.state = {
             bookToShow: {},
             genre: '',
+            favorites: [],
             showingFaves: false,
             searchMade: false
         }
@@ -41,7 +42,7 @@ class App extends React.Component {
     getFaves () {
         axios.get('/faves')
              .then((response) => {
-                 console.log('from the database: ', response)
+                 console.log('from the database: ', response.data)
              })
              .catch((err) => {
                  console.error(err)
@@ -77,6 +78,7 @@ class App extends React.Component {
     handleFavesClick() {
         console.log('clicked the faves button!')
         this.setState({showingFaves: true})
+        this.getFaves()
     }
 
 

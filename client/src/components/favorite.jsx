@@ -7,7 +7,9 @@ const FavoriteBook = ({stats, func}) => (
         Title: {stats.title}
         </div>
 
-        <button className="removeFav"  onClick= {func}>Remove from Favorites</button>
+        <button className="removeFav"  onClick= {() => {
+            func(stats)
+        }}>Remove from Favorites</button>
     </div>
 )
 

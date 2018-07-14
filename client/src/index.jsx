@@ -137,9 +137,9 @@ class App extends React.Component {
                         <button className = "showFaves" onClick = {this.handleFavesClick}>Show Favorited Books</button>
                     </div>
                 
-                    <div className="dropdown">
-                        <select onClick = {this.handleGenreSelect}>
-                            <option value=''></option>
+                    <div className= "buttons">
+                        <select className="dropdown" onClick = {this.handleGenreSelect}>
+                            <option value=''>Select an Option</option>
                             <option value='History' >History</option>
                             <option value='Romance'>Romance</option>
                             <option value='Fantasy'>Fantasy</option>
@@ -147,8 +147,11 @@ class App extends React.Component {
                             <option value='Biography'>Biography</option>
                             <option value='Travel'>Travel</option>
                         </select>
-                        <button onClick= {this.findBook}>Find my book!</button>
-                        <button className="favorite" onClick = {this.addFave}>Save this book!</button>
+                        <button className = "find" onClick= {this.findBook}>Find my book!</button>
+                        { this.state.searchMade ?
+                            <button className= "save" onClick = {this.addFave}>Save this book!</button>
+                            : null
+                        }
                     </div>
                 
 
@@ -158,25 +161,29 @@ class App extends React.Component {
                             <div className="bookInfo">
                         
                             </div>
-                            <div> Here is your book info:</div>
-                            <div> Title: {`${this.state.bookToShow.volumeInfo.title}`}</div>
+                            <div className = 'headerHeader'> Here is your book info:</div>
+                            <div className = 'headerTitle'> Title: {`${this.state.bookToShow.volumeInfo.title}`}</div>
 
                             <div>
                             <img className='bookImg' src = {`${this.state.bookToShow.volumeInfo.imageLinks.thumbnail}`} ></img>
                             </div>
 
-                            <div>
-                            Author: {`${this.state.bookToShow.volumeInfo.authors[0]}`}
-                            Published: {`${this.state.bookToShow.volumeInfo.publishedDate}`}
-                            Synposis: {`${this.state.bookToShow.volumeInfo.description}`}
-                            {
-                                this.state.bookToShow.saleInfo.retailPrice ?
-                                <span>
-                                Price: {`${this.state.bookToShow.saleInfo.retailPrice.amount}`}
-                                <a href = {`${this.state.bookToShow.saleInfo.buyLink}`}>Buy Here</a>
-                                </span>
-                                : null
-                            }
+                            <div className = "bookInfoMain">
+                                <div className="bookInfo1">
+                                Author: {`${this.state.bookToShow.volumeInfo.authors[0]}`}
+                                Published: {`${this.state.bookToShow.volumeInfo.publishedDate}`}
+                                {
+                                    this.state.bookToShow.saleInfo.retailPrice ?
+                                    <span>
+                                    Price: {`${this.state.bookToShow.saleInfo.retailPrice.amount}`}
+                                    <a href = {`${this.state.bookToShow.saleInfo.buyLink}`}>Buy Here</a>
+                                    </span>
+                                    : null
+                                }
+                                </div>
+                                <div className= "bookInfo2">
+                                Synposis: {`${this.state.bookToShow.volumeInfo.description}`}
+                                </div>
                             </div>
                         </div>
                         :
